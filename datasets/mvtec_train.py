@@ -109,7 +109,7 @@ class SelfSupMVTecDataset(Dataset):
 
         assert len(x_paths) == len(y), 'number of x and y should be same'
 
-        transform = T.Resize(low_res, Image.ANTIALIAS)
+        transform = T.Resize(low_res, Image.LANCZOS)
         xs = []
         for path in x_paths:
             xs.append(transform(Image.open(path).convert('RGB')))

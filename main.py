@@ -15,10 +15,21 @@ from utils.metric import *
 from utils.visualizer import *
 import torch.optim as optim
 import warnings
-starter, ender = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
+#starter, ender = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
+import time  # Make sure to import the time module
+
+# Use the time module to measure elapsed time
+starter = time.time()  # Record the start time
+# ... (your code block that you want to time)
+ender= time.time()  # Record the end time
+
+# Calculate the elapsed time
+elapsed_time = ender - starter
+print(f"Elapsed time: {elapsed_time:.2f} seconds")
+#starter, ender = torch.mps.Event(enable_timing=True) ,torch.mps.Event(enable_timing=True)
 warnings.filterwarnings("ignore", category=UserWarning)
 use_cuda = torch.cuda.is_available()
-device = torch.device('cuda' if use_cuda else 'cpu')
+device = torch.device("cpu")
 import math
 from datasets.mvtec_train import SelfSupMVTecDataset, OBJECTS
 

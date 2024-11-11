@@ -20,7 +20,7 @@ class MVTecDataset(Dataset):
         self.x, self.y, self.mask = self.load_dataset_folder()
 
         if wild_ver:
-            self.transform_x =   T.Compose([T.Resize(resize, Image.ANTIALIAS),
+            self.transform_x =   T.Compose([T.Resize(resize, Image.LANCZOS),
                                             T.RandomRotation(10),
                                             T.RandomCrop(cropsize),
                                             T.ToTensor(),
@@ -33,7 +33,7 @@ class MVTecDataset(Dataset):
                                                 T.ToTensor()])
                                                 
         else:
-            self.transform_x =   T.Compose([T.Resize(resize, Image.ANTIALIAS),
+            self.transform_x =   T.Compose([T.Resize(resize, Image.LANCZOS),
                                             T.CenterCrop(cropsize),
                                             T.ToTensor(),
                                             T.Normalize(mean=[0.485, 0.456, 0.406],

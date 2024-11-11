@@ -23,7 +23,7 @@ def pro_auc_pxl(gt, score):
 
     gt[gt <= 0.5] = 0
     gt[gt > 0.5] = 1
-    gt = gt.astype(np.bool)
+    gt = gt.astype(np.bool_)
 
     max_step = 200
     expect_fpr = 0.3
@@ -37,7 +37,7 @@ def pro_auc_pxl(gt, score):
     threds = []
     fprs = []
 
-    binary_score_maps = np.zeros_like(score, dtype=np.bool)
+    binary_score_maps = np.zeros_like(score, dtype=np.bool_)
 
     for step in range(max_step):
         thred = max_th - step * delta
